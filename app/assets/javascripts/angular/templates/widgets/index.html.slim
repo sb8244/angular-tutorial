@@ -3,7 +3,8 @@
     thead: tr
       th Title
       th Content
+      th
     tbody
-      tr ng-repeat="widget in widgets"
+      tr ng-repeat="widget in widgets" ui-sref="widgets.show({id: widget.id})"
         td {{widget.title}}
         td {{widget.content}}

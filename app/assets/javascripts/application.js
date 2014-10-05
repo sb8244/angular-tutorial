@@ -28,11 +28,11 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
   RestangularProvider.setDefaultRequestParams({format: "json"});
 
 
-      $urlRouterProvider.otherwise("/");
+      $urlRouterProvider.otherwise("/widgets");
 
   $stateProvider
     .state('widgets', {
-      url: "/",
+      url: "/widgets",
       abstract: true,
       template: "<div ui-view></div>"
     })
@@ -40,5 +40,10 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
       url: "",
       templateUrl: "widgets/index.html",
       controller: "WidgetsListController"
+    }).
+    state('widgets.show', {
+      url: "/widgets/:id",
+      templateUrl: "widgets/show.html",
+      controller: "WidgetsShowController"
     })
 }]);
