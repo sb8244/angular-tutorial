@@ -21,3 +21,4 @@
       tr ng-repeat="widget in widgets" ui-sref="widgets.show({id: widget.id})"
         td {{widget.title}}
         td {{widget.content}}
+        td: button.btn.btn-xs.btn-danger ng-click="destroy(widget); $event.stopPropagation()" Destroy Widget

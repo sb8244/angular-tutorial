@@ -8,4 +8,12 @@ APP.controller('WidgetsListController', ['$scope', 'Restangular', function($scop
       $scope.widgets.push(widget);
     });
   };
+
+  $scope.destroy = function(widget) {
+    widget.remove().then(function() {
+      _.remove($scope.widgets, function(w) {
+        return w.id === widget.id;
+      });
+    });
+  };
 }]);
