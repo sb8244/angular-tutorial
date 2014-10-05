@@ -1,3 +1,5 @@
-APP.controller('WidgetsListController', ['$scope', function($scope) {
-
+APP.controller('WidgetsListController', ['$scope', 'Restangular', function($scope, Restangular) {
+  Restangular.all("widgets").getList().then(function(widgets) {
+    $scope.widgets = widgets;
+  });
 }]);

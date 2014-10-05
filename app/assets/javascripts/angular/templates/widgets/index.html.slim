@@ -1,2 +1,9 @@
-div
-  | Hi
+.content
+  table.table
+    thead: tr
+      th Title
+      th Content
+    tbody
+      tr ng-repeat="widget in widgets"
+        td {{widget.title}}
+        td {{widget.content}}

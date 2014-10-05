@@ -25,8 +25,10 @@ var APP = angular.module('Tutorial', [
 APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
   RestangularProvider.setBaseUrl("/api");
+  RestangularProvider.setDefaultRequestParams({format: "json"});
 
-  $urlRouterProvider.otherwise("/");
+
+      $urlRouterProvider.otherwise("/");
 
   $stateProvider
     .state('widgets', {
