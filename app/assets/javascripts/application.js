@@ -22,8 +22,21 @@ var APP = angular.module('Tutorial', [
   'restangular'
 ]);
 
-APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
   RestangularProvider.setBaseUrl("/api");
 
   $urlRouterProvider.otherwise("/");
+
+  $stateProvider
+    .state('widgets', {
+      url: "/",
+      abstract: true,
+      template: "<div ui-view></div>"
+    })
+    .state('widgets.list', {
+      url: "",
+      templateUrl: "widgets/index.html",
+      controller: "WidgetsListController"
+    })
 }]);
