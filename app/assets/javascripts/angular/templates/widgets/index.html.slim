@@ -1,4 +1,17 @@
 .content
+  button.btn.btn-success ng-click="showCreate = !showCreate" New Widget
+
+  form ng-show="showCreate === true" name="form"
+    .form-controls.row
+      .col-xs-3: label Title
+      .col-xs-9: input.form-control name="title" ng-model="newWidget.title" required=true
+    .form-controls.row
+      .col-xs-3: label Content
+      .col-xs-9: input.form-control name="content" ng-model="newWidget.content" required=true
+    .form-controls.row
+      .col-xs-3
+      .col-xs-9: button.btn-block.btn.btn-success ng-click="create(newWidget)" ng-disabled="form.$invalid" Create
+
   table.table
     thead: tr
       th Title
