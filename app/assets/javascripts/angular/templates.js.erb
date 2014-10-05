@@ -1,0 +1,17 @@
+angular.module('templates', []).
+
+run(['$templateCache', function($templateCache) {
+  <%
+    environment.context_class.instance_eval { include ActionView::Helpers::JavaScriptHelper }
+    app_root  = File.expand_path('../../angular', __FILE__)
+    templates = File.join(app_root, %w{templates ** *.slim})
+
+    Dir.glob(templates).each do |f|
+
+      depend_on(f)
+      key = f.gsub(%r(^#{app_root}/templates/),'').gsub(/.slim$/, "")
+      content = environment.find_asset(f).body
+  %>
+  $templateCache.put("<%= key %>", "<%= escape_javascript(content) %>");
+  <% end %>
+}]);

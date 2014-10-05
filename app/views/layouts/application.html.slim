@@ -1,0 +1,10 @@
+doctype 5
+html( ng-app="Tutorial" )
+  head
+    title Tutorial
+    = stylesheet_link_tag 'application', media: 'all'
+  body
+    .container
+      div ui-view
+
+    = javascript_include_tag 'application'

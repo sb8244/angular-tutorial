@@ -1,0 +1,17 @@
+{
+  "name": "Tutorial",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "angular": "~1.2.22",
+    "angular-ui-router": "~0.2.10",
+    "restangular": "~1.4.0"
+  }
+}
