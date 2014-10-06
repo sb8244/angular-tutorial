@@ -45,5 +45,6 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
       url: "/widgets/:id",
       templateUrl: "widgets/show.html",
       controller: "WidgetsShowController"
-    })
+    });
+  $locationProvider.html5Mode(true);
 }]);
