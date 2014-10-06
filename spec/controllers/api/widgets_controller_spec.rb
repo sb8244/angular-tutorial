@@ -1,4 +1,4 @@
-RSpec.describe Api::WidgetsController, :type => :controller do
+RSpec.describe Api::WidgetsController, type: :controller do
   before(:each) do
     request.env["HTTP_ACCEPT"] = 'application/json'
   end
