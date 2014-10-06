@@ -1,3 +1,5 @@
+# Make sure you have .rspec set up properly or this will fail.
+
 RSpec.describe Api::WidgetsController, type: :controller do
   before(:each) do
     request.env["HTTP_ACCEPT"] = 'application/json'
