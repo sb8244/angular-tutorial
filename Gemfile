@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 # rails
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.0'
+gem 'responders', '~> 2.0'
 
 gem 'dotenv-rails'
 

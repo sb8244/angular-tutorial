@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141005040238) do
 
-  create_table "widgets", force: true do |t|
+  create_table "widgets", force: :cascade do |t|
     t.text     "title"
     t.text     "content"
     t.boolean  "cool"
