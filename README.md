@@ -62,6 +62,8 @@ The first thing to check out is the `assets/javascripts/application.js` file. Th
 
 The next big thing is the `javascripts/angular/templates.js.erb` file. This file will take advantage of the asset pipeline to grab all Slim templates in the `javascripts/angular/templates/*` directory and put them in the `$templateCache`. The `$templateCache` in Angular is always looked at when referencing a template, and this will ensure that our templates are loaded. If you follow my assets structure, you will not need to change this file, but it has some relative paths in it (be cautious if you move it).
 
+If you run into an issue where `body` isn't available in templates.js.erb, change `body` to `source`. It is an updated version of sprockets.
+
 # Routes Config
 
 The last thing to get our application displaying on the frontend is to set up our `config/routes.rb` file. At the very bottom of the file, put:
@@ -146,9 +148,11 @@ At this point, I have just committed my code as commit "Step 3". We have our Ang
 We're going to create our WidgetsListController at `assets/javascripts/angular/controllers/widgets.list.js`
 
 ```
-APP.controller('WidgetsListController', ['$scope', 'Restangular', function($scope, Restangular) {
+APP.controller('WidgetsListController', ['Restangular', function(Restangular) {
+  var self = this;
+  
   Restangular.all("widgets").getList().then(function(widgets) {
-    $scope.widgets = widgets;
+    self.widgets = widgets;
   });
 }]);
 ```
@@ -159,9 +163,9 @@ I also went ahead and created a WidgetsShowController and view, but it isn't ver
 
 ```
 // This is in widgets.index.js
-  $scope.create = function(widget) {
+  self.create = function(widget) {
     Restangular.all("widgets").post(widget).then(function(widget) {
-      $scope.widgets.push(widget);
+      self.widgets.push(widget);
     });
   };
 ```
@@ -186,9 +190,9 @@ Angular's form directive will perform validations when it has a name and then I 
 For our last feature, remove will be added in. This will also go in the WidgetsListController:
 
 ```
-  $scope.destroy = function(widget) {
+  self.destroy = function(widget) {
     widget.remove().then(function() {
-      _.remove($scope.widgets, function(w) {
+      _.remove(self.widgets, function(w) {
         return w.id === widget.id;
       });
     });
