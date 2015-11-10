@@ -1,16 +1,16 @@
 .content
-  button.btn.btn-success ng-click="showCreate = !showCreate" New Widget
+  button.btn.btn-success ng-click="ctrl.flags.showCreate = !ctrl.flags.showCreate" New Widget
 
-  form ng-show="showCreate === true" name="form"
+  form ng-show="ctrl.flags.showCreate === true" name="form"
     .form-controls.row
       .col-xs-3: label Title
-      .col-xs-9: input.form-control name="title" ng-model="newWidget.title" required=true
+      .col-xs-9: input.form-control name="title" ng-model="ctrl.newWidget.title" required=true
     .form-controls.row
       .col-xs-3: label Content
-      .col-xs-9: input.form-control name="content" ng-model="newWidget.content" required=true
+      .col-xs-9: input.form-control name="content" ng-model="ctrl.newWidget.content" required=true
     .form-controls.row
       .col-xs-3
-      .col-xs-9: button.btn-block.btn.btn-success ng-click="create(newWidget)" ng-disabled="form.$invalid" Create
+      .col-xs-9: button.btn-block.btn.btn-success ng-click="ctrl.create(ctrl.newWidget)" ng-disabled="form.$invalid" Create
 
   table.table
     thead: tr
@@ -18,7 +18,7 @@
       th Content
       th
     tbody
-      tr ng-repeat="widget in widgets" ui-sref="widgets.show({id: widget.id})"
+      tr ng-repeat="widget in ctrl.widgets" ui-sref="widgets.show({id: widget.id})"
         td {{widget.title}}
         td {{widget.content}}
-        td: button.btn.btn-xs.btn-danger ng-click="destroy(widget); $event.stopPropagation()" Destroy Widget
+        td: button.btn.btn-xs.btn-danger ng-click="ctrl.destroy(widget) ; $event.stopPropagation()" Destroy Widget

@@ -1,17 +1,24 @@
-APP.controller('WidgetsListController', ['$scope', 'Restangular', function($scope, Restangular) {
+APP.controller('WidgetsListController', ['Restangular', function(Restangular) {
+  var self = this;
+
+  self.newWidget = {};
+  self.flags = {
+    showCreate: false
+  };
+
   Restangular.all("widgets").getList().then(function(widgets) {
-    $scope.widgets = widgets;
+    self.widgets = widgets;
   });
 
-  $scope.create = function(widget) {
+  self.create = function(widget) {
     Restangular.all("widgets").post(widget).then(function(widget) {
-      $scope.widgets.push(widget);
+      self.widgets.push(widget);
     });
   };
 
-  $scope.destroy = function(widget) {
+  self.destroy = function(widget) {
     widget.remove().then(function() {
-      _.remove($scope.widgets, function(w) {
+      _.remove(self.widgets, function(w) {
         return w.id === widget.id;
       });
     });

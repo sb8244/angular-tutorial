@@ -39,11 +39,11 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
     .state('widgets.list', {
       url: "",
       templateUrl: "widgets/index.html",
-      controller: "WidgetsListController"
+      controller: "WidgetsListController as ctrl"
     }).
     state('widgets.show', {
       url: "/widgets/:id",
       templateUrl: "widgets/show.html",
-      controller: "WidgetsShowController"
+      controller: "WidgetsShowController as ctrl"
     });
 }]);
