@@ -10,7 +10,7 @@ run(['$templateCache', function($templateCache) {
 
       depend_on(f)
       key = f.gsub(%r(^#{app_root}/templates/),'').gsub(/.slim$/, "")
-      content = environment.find_asset(f).body
+      content = environment.find_asset(f).source
   %>
   $templateCache.put("<%= key %>", "<%= escape_javascript(content) %>");
   <% end %>
