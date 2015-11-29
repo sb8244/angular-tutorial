@@ -44,8 +44,8 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
       url: "",
       templateUrl: "widgets/index.html",
       controller: "WidgetsListController as ctrl"
-    }).
-    state('widgets.show', {
+    })
+    .state('widgets.show', {
       url: "/widgets/:id",
       templateUrl: "widgets/show.html",
       controller: "WidgetsShowController as ctrl"
