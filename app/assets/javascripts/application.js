@@ -27,7 +27,11 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
   RestangularProvider.setBaseUrl("/api");
   RestangularProvider.setDefaultRequestParams({format: "json"});
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+
   $urlRouterProvider.otherwise("/widgets");
 
   $stateProvider
@@ -40,8 +44,8 @@ APP.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'Restan
       url: "",
       templateUrl: "widgets/index.html",
       controller: "WidgetsListController as ctrl"
-    }).
-    state('widgets.show', {
+    })
+    .state('widgets.show', {
       url: "/widgets/:id",
       templateUrl: "widgets/show.html",
       controller: "WidgetsShowController as ctrl"
